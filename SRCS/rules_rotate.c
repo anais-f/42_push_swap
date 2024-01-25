@@ -24,6 +24,7 @@ void	rotate(t_stack *stack)
 	else if (stack->id == 'b') {
 		if (write (1, "rb\n", 3) != 3)
 			exit (1);
+		//return (free_exit(stacka, stackb, true));
 	}
 }
 

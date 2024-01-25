@@ -12,49 +12,7 @@
 
 #include "push_swap.h"
 
-int main(int argc, char **argv)
-{
-	t_stack	a;
-	t_stack	b;
 
-	if (argc == 1)
-		free_exit(NULL, NULL, true);
-
-	init_stack(&a, &b);
-
-//	if (argc == 2)
-//		return (-1);
-//a revoir, doit renvoyer l'element
-
-	if (argc > 1)
-	{
-//		if (sort_stack(&a) == 0)
-//			print_stack(&a);
-//		else
-//		{
-			fill_stack(argv, &a);
-			if (a.head == NULL)
-				free_exit(a.head, NULL, true);
-
-			//faire une verif avant de trier la liste
-			//ft_tri(&a.head, argc);
-			index_value(&a);
-			ft_printf("stack before :\n");
-			print_stack(&a);
-			print_stack(&b);
-			ft_printf("\nInstructions :\n");
-			swap(&a);
-			ft_push(&a, &b);
-			reverse_rotate_ab(&a, &b);
-			ft_push(&b, &a);
-			ft_printf("\nstack after :\n");
-			print_stack(&a);
-			print_stack(&b);
-//		}
-	}
-	free_exit(a.head, NULL, false);
-	return (0);
-}
 
 int check_args(char **argv)
 {

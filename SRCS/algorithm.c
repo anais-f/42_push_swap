@@ -36,35 +36,54 @@ void	index_value(t_stack *a)
 		size_lst--;
 	}
 }
-// liste chainee fixe
 
-void	ft_tri(t_node **stack_a, int argc)
+//
+//void	presort_stack(t_stack *a, t_stack *b)
+//{
+//	int	index_stack;
+//	int i;
+//	int chunk;
+//	int num;
+//
+//	num = 0;
+//	i = 0;
+//	index_stack = a->size;
+//	while (i <= index_stack)
+//	{
+//		//get chunk pour avoir le nombre de chunk en fonction de la taille
+//		while (i > )
+//	}
+//
+//}
+
+//void	get_chunk
+//prendre l'algo de hmoon et l'appliquer
+
+
+void    tiny_sort(t_stack *a, t_stack *b)
 {
-	size_t i;
-	size_t k;
-	int	tmp;
-	t_node	*current;
-	k = argc - 2;
+	int nb_nodes;
+	int i;
 
-	while (k > 0)
+	i = 0;
+	nb_nodes = a->size;
+	while (i <= nb_nodes - 1)
 	{
-		i = 0;
-		current = *stack_a;
-		while (i < k)
+		while (a->head->index != i)
 		{
-			if (current->value > current->next->value)
-			{
-				tmp = current->next->value;
-				current->next->value = current->value;
-				current->value = tmp;
-			}
-			i++;
-			current = current->next;
+			rotate(a);
 		}
-		k--;
+		ft_push(a, b);
+		i++;
+	}
+	while (i > 0)
+	{
+		ft_push(b, a);
+		i--;
 	}
 }
-// tri a bulles, on compare avec le +1 uniquement
+// espece de tri a bulles, on compare avec le +1 uniquement
+
 
 //void	ft_tri(t_node **stack_a, int argc)
 //{
