@@ -21,6 +21,8 @@ void	ft_push(t_stack *from, t_stack *to)
 	from->head->prev->next = from->head->next;
 	from->head = from->head->next;
 	from->size--;
+	if (from->size == 0)
+		from->head = NULL;
 	ft_dlstadd_front(&to->head, temp);
 	to->size++;
 	if (to->id == 'a' && from->id == 'b')

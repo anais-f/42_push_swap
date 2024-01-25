@@ -39,19 +39,16 @@ int main(int argc, char **argv)
 		//faire une verif avant de trier la liste
 		//ft_tri(&a.head, argc);
 		index_value(&a);
-		ft_printf("stack before :\n");
-		print_stack(&a);
-		print_stack(&b);
-		tiny_sort(&a, &b);
-//		ft_printf("\nInstructions :\n");
-//		swap(&a);
-//		ft_push(&a, &b);
-//		reverse_rotate_ab(&a, &b);
-//		ft_push(&b, &a);
-		ft_printf("\nstack after :\n");
-		print_stack(&a);
-		print_stack(&b);
-//		}
+//		ft_printf("stack before :\n");
+//		print_stack(&a);
+//		print_stack(&b);
+//		tiny_sort(&a, &b);
+		presort_stack(&a, &b);
+		//sort(&a, &b);
+//		ft_printf("\nstack after :\n");
+//		print_stack(&a);
+//		print_stack(&b);
+////		}
 	}
 	free_exit(a.head, NULL, false);
 	return (0);
