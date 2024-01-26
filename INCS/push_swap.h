@@ -22,9 +22,9 @@
 typedef struct s_node
 {
 	int				value;
-	int 			index; // correspondra a l'index de sa position finale ! et non sa place d'entree dans les maillons
+	int 			index;
 	struct	s_node	*next;
-	struct	s_node	*prev; //renvoi sur une autre structure maillon
+	struct	s_node	*prev;
 }	t_node;
 
 typedef struct	s_stack
@@ -33,7 +33,7 @@ typedef struct	s_stack
 	int				size;
 	struct s_node	*head; //pointeur sur une structure -> me permet de pointer sur ma head de ma stack
 }	t_stack;
-//structure qyu contient mes deux head de stack pour conserver leur nom + taille et les promener partout a la place des pointeurs
+//structure qui contient mes deux pointeurs sur head de stack pour conserver leur nom + taille et les promener partout a la place des pointeurs
 
 int		check_args(char **argv);
 int		get_value(const char *str, int *numb);
@@ -54,9 +54,11 @@ void	print_stack(t_stack *stack);
 void	init_stack(t_stack *a, t_stack *b);
 void	free_exit(t_node *a, t_node *b, bool error);
 void	index_value(t_stack *a);
-float	get_chunk(t_stack *a);
-void	presort_stack(t_stack *a, t_stack *b);
+double	get_chunk(t_stack *a);
+void	pre_sorting_stack(t_stack *a, t_stack *b);
 void	sort(t_stack *a, t_stack *b);
 void    tiny_sort(t_stack *a, t_stack *b);
+int		find_half(t_stack *b, int index_to_push, int nb_index_stack, int *n);
+void 	final_sorting(t_stack *a, t_stack *b, int *n);
 
 #endif //PUSH_SWAP_PUSH_SWAP_H

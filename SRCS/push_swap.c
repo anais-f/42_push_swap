@@ -16,6 +16,7 @@ int main(int argc, char **argv)
 {
 	t_stack	a;
 	t_stack	b;
+	int n = 0;
 
 	if (argc == 1)
 		free_exit(NULL, NULL, true);
@@ -37,18 +38,18 @@ int main(int argc, char **argv)
 			free_exit(a.head, NULL, true);
 
 		//faire une verif avant de trier la liste
-		//ft_tri(&a.head, argc);
 		index_value(&a);
-//		ft_printf("stack before :\n");
+	//	tiny_sort(&a, &b);
+		pre_sorting_stack(&a, &b);
+//		ft_printf("stack before final sort :\n");
 //		print_stack(&a);
 //		print_stack(&b);
-	//	tiny_sort(&a, &b);
-		presort_stack(&a, &b);
-//		sort(&a, &b);
+	//	find_half(&b, 20, 19, &n);
+		final_sorting(&a, &b, &n);
 //		ft_printf("\nstack after :\n");
 //		print_stack(&a);
 //		print_stack(&b);
-////		}
+
 	}
 	free_exit(a.head, NULL, false);
 	return (0);

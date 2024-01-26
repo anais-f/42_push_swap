@@ -1,3 +1,23 @@
+#include "push_swap.h"
+
+void	sort(t_stack *a, t_stack *b)
+{
+	int nb_nodes;
+	(void) a;
+	nb_nodes = b->size - 1;
+	printf("nb nodes de B = %d\n", nb_nodes);
+	while (b->head != NULL)
+	{
+		if (b->head->index == nb_nodes)
+		{
+			ft_push(b,a);
+			nb_nodes--;
+		}
+		else
+			rotate(b);
+	}
+}
+
 //void    tiny_sort(t_stack *a, t_stack *b)
 //{
 //	int nb_nodes;
