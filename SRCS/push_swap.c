@@ -42,9 +42,9 @@ int main(int argc, char **argv)
 //		ft_printf("stack before :\n");
 //		print_stack(&a);
 //		print_stack(&b);
-//		tiny_sort(&a, &b);
+	//	tiny_sort(&a, &b);
 		presort_stack(&a, &b);
-		//sort(&a, &b);
+//		sort(&a, &b);
 //		ft_printf("\nstack after :\n");
 //		print_stack(&a);
 //		print_stack(&b);

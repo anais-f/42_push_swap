@@ -23,7 +23,7 @@ void	index_value(t_stack *a)
 	node_index = a->head; // demarre a 0 = i
 	while (size_lst > 0)
 	{
-		count_value = 1;
+		count_value = 0;
 		to_compare = node_index->next; // demarre a l'equivalent de 1 = i+1
 		while (to_compare != node_index)
 		{
@@ -58,74 +58,39 @@ void	sort(t_stack *a, t_stack *b)
 void	presort_stack(t_stack *a, t_stack *b)
 {
 	int chunk;
-	int begin_interval;
-	int end_interval;
-	//t_node	*head;
+	int num;
 
 	(void) b;
-	begin_interval = 1;
+	num = 0;
 	chunk = get_chunk(a);
-	end_interval = chunk;
-//	head = a->head;
-	printf("taille chunk %d\n", chunk);
 	while (a->head != NULL)
 	{
-		if (a->head->index >= begin_interval && a->head->index <= end_interval)
+		if (a->head->index >= 0 && a->head->index <= chunk + num)
 		{
-			ft_push(a, b);
-			end_interval += 1;
-			if (b->head->index % 2 != 0)
+			if (a->head->index <= num) // je push en haut
+				ft_push(a, b);
+			else if (a->head->index > num) // je push en bas
+			{
+				ft_push(a,b);
 				rotate(b);
+			}
+			num += 1;
 		}
 		else
+		{
 			rotate(a);
+		}
 	}
-//
-//	je rotate toute la stack A jusqu'a trouver un index dans mon tas
-//	index = push sur b
-//	une fois la liste parcourue, je passe au chunk suivant et je re rotate sur A
-//
-
 }
 
-
-double	get_chunk(t_stack *a)
+float	get_chunk(t_stack *a)
 {
 	int 	nb_nodes;
-	float	nb_chunk;
+	float	chunk;
 
 	nb_nodes = a->size;
-	nb_chunk = 0.000000053 * (nb_nodes * nb_nodes) + 0.03 * nb_nodes + 14.5;
-	return (nb_chunk);
+	chunk = 0.000000053 * (nb_nodes * nb_nodes) + 0.03 * nb_nodes + 14.5;
+	return (chunk);
  // on va chercher sur l'intervalle de chunk
 }
 
-
-
-
-
-
-
-//void    tiny_sort(t_stack *a, t_stack *b)
-//{
-//	int nb_nodes;
-//	int i;
-//
-//	i = 1;
-//	nb_nodes = a->size;
-//	while (i <= nb_nodes)
-//	{
-//		while (a->head->index != i)
-//		{
-//			rotate(a);
-//		}
-//		ft_push(a, b);
-//		i++;
-//	}
-//	while (i > 0)
-//	{
-//		ft_push(b, a);
-//		i--;
-//	}
-//}
-// espece de tri a bulles, on compare avec le +1 uniquement
