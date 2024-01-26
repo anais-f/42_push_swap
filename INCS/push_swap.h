@@ -54,5 +54,9 @@ void	print_stack(t_stack *stack);
 void	init_stack(t_stack *a, t_stack *b);
 void	free_exit(t_node *a, t_node *b, bool error);
 void	index_value(t_stack *a);
+float	get_chunk(t_stack *a);
+void	presort_stack(t_stack *a, t_stack *b);
+void	sort(t_stack *a, t_stack *b);
+void    tiny_sort(t_stack *a, t_stack *b);
 
 #endif //PUSH_SWAP_PUSH_SWAP_H
