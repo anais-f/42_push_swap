@@ -128,7 +128,10 @@ void	pre_sorting_stack(t_stack *a, t_stack *b)
 			else if (a->head->index > num) // je push en bas
 			{
 				ft_push(a,b);
-				rotate_ab(a,b);
+				if (a->head->index >= 0 && a->head->index <= chunk + num)
+					rotate(b);
+				else
+					rotate_ab(a,b);
 			}
 			num += 1;
 		}

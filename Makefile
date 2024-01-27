@@ -6,21 +6,10 @@
 #    By: anfichet <anfichet@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/16 18:25:46 by anfichet          #+#    #+#              #
-#    Updated: 2024/01/16 18:25:46 by anfichet         ###   ########.fr        #
+#    Updated: 2024/01/27 16:46:29 by anfichet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: anfichet <anfichet@student.42lyon.fr>      +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/09 17:56:00 by anfichet          #+#    #+#              #
-#    Updated: 2024/01/16 16:21:51 by anfichet         ###   ########lyon.fr    #
-#                                                                              #
-# **************************************************************************** #
 
 NAME= push_swap
 
@@ -60,11 +49,9 @@ LIBS_TARGET= ./libft/libft.a
 
 CC= cc
 
-CFLAGS= -Werror -Wextra -Wall -MMD -MP
+CFLAGS= -Werror -Wextra -Wall -g3 -MMD -MP
 
 CPPFLAGS = -I$(INCS) -I$(INCS_LIBS)
-
-CFLEAKS = -g3
 
 CFSIGSEV = -g3 -fsanitize=address
 
@@ -101,9 +88,6 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 
 #-c prend les .c et les creer en .o
 # -o : sert a donner les noms
-
-valgrind:
-	$(MAKE) CFLAGS="$(CFLAGS) $(CFLEAKS)"
 
 fsanitize:fclean $(LIBS_TARGET) $(OBJS) $(INCS)
 	$(CC) $(CFLAGS) $(CFSIGSEV) $(CPPFLAGS) $(OBJS) -L$(dir $(LIBS_TARGET)) -lft -o $(NAME)
