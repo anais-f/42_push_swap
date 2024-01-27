@@ -60,5 +60,7 @@ void	sort(t_stack *a, t_stack *b);
 void    tiny_sort(t_stack *a, t_stack *b);
 int		find_half(t_stack *b, int index_to_push, int nb_index_stack, int *n);
 void 	final_sorting(t_stack *a, t_stack *b, int *n);
+int 	check_list_sorted(t_stack *a);
+void	sorting_little_stack(t_stack *a, t_stack *b);
 
 #endif //PUSH_SWAP_PUSH_SWAP_H

@@ -67,7 +67,7 @@ void	fill_stack(char **argv, t_stack *stack_a)
 				free_exit(stack_a->head, NULL, true);
 			current = current->next;
 		}
-		//on compare toujours avec stac->head->orev->value et c'est current->value qui change a chaque fois et parcourt la chaine
+		//on compare toujours avec stac->head->prev->value et c'est current->value qui change a chaque fois et parcourt la chaine
 		// stack->head->prev->value contient donc toujours le dernier maillon cree et le compare a l'ensemble de la chaine deja stocke
 		i++;
 	}
@@ -77,24 +77,28 @@ void	free_exit(t_node *a, t_node *b, bool error)
 {
 	t_node	*temp;
 
-	if (a)
+//remettre le pointeur de head a NULL
+	if (a) {
 		a->prev->next = NULL;
+	}
 	while (a)
 	{
 		temp = a;
 		a = a->next;
 		free (temp);
 	}
-	if (b)
+	if (b) {
 		b->prev->next = NULL;
+	}
 	while (b)
 	{
 		temp = b;
 		b = b->next;
 		free (temp);
 	}
-	if (error)
+	if (error) {
 		write (STDERR_FILENO, "Error\n", 6);
+	}
 	exit (error);
 }
 // error : define a 1 par defaut

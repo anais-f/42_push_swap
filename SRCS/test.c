@@ -18,6 +18,17 @@ void	sort(t_stack *a, t_stack *b)
 	}
 }
 
+t_node	*biggest;
+
+biggest = get_biggest_node(a);
+if (a->head->index == biggest->index)
+rotate(a, NULL);
+else if (a->head->next->index == biggest->index)
+reverse_rotate(a, NULL);
+if (a->head->index > a->head->next->index)
+swap(a, NULL);
+
+
 //void    tiny_sort(t_stack *a, t_stack *b)
 //{
 //	int nb_nodes;

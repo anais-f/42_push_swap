@@ -29,6 +29,7 @@ SRCS=\
 		rules_push.c \
 		stack_utils.c \
 		algorithm.c \
+		algorithm_utils.c \
 
 
 SRCS:= $(SRCS:%=$(SRCS_DIR)/%)
