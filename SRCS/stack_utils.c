@@ -32,7 +32,7 @@ void	print_stack(t_stack *stack)
 	ft_printf("\nstack %c\n", stack->id);
 	while (len_stack > 0)
 	{
-		ft_printf("value = %d et index = %d\n", temp->value, temp->index);
+		dprintf(2, "value = %d et index = %d\n", temp->value, temp->index);
 		temp = temp->next;
 		len_stack--;
 	}

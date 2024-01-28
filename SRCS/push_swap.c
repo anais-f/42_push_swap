@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 {
 	t_stack	a;
 	t_stack	b;
-	int n = 0;
+	//int n = 0;
 
 	if (argc == 1)
 		free_exit(NULL, NULL, true);
@@ -48,10 +48,11 @@ int main(int argc, char **argv)
 //		print_stack(&a);
 //		print_stack(&b);
 		//	find_half(&b, 20, 19, &n);
-		final_sorting(&a, &b, &n);
-//		ft_printf("\nstack after :\n");
-//		print_stack(&a);
-//		print_stack(&b);
+		find_min_index(&b);
+//		final_sorting(&a, &b, &n);
+		dprintf(2, "\nstack after :\n");
+		print_stack(&a);
+		print_stack(&b);
 
 	}
 	free_exit(a.head, NULL, false);

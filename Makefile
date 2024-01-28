@@ -30,6 +30,7 @@ SRCS=\
 		stack_utils.c \
 		algorithm.c \
 		algorithm_utils.c \
+		test.c \
 
 
 SRCS:= $(SRCS:%=$(SRCS_DIR)/%)
@@ -54,7 +55,7 @@ CFLAGS= -Werror -Wextra -Wall -g3 -MMD -MP
 
 CPPFLAGS = -I$(INCS) -I$(INCS_LIBS)
 
-CFSIGSEV = -g3 -fsanitize=address
+CFSIGSEV = -fsanitize=address
 
 RM= rm -rf
 
