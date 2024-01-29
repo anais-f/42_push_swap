@@ -1,5 +1,54 @@
 #include "push_swap.h"
 
+//
+//if (a->head->prev->index == biggest_index_a)
+//{
+//push(b, a);
+//if (a->head->index != a->head->next->index - 1)
+//rotate(a);
+//}
+//else
+//{
+//if (find_half(b, biggest_index_b, nb_index_stack) == 1)
+//{
+//if (b->head->index < biggest_index_a && b->head->index > smallest_index_a)
+//push(b, a);
+//else
+//rotate(b);
+//}
+//else
+//reverse_rotate(b);
+//}
+////	if (b->head->index < biggest_index_a && b->head->index > smallest_index_a) {
+////		push(b, a);
+////	}
+//if (a->head->index == a->head->next->index - 1) {
+//push(b, a);
+//if ()
+//}
+//else {
+//rotate(a);
+//}
+
+
+//int find_min_index(t_stack *a)
+//{
+//	t_node	*temp;
+//	int 	index_min;
+//
+//	temp = a->head;
+//	index_min = temp->index;
+//	while (temp->next != a->head)
+//	{
+//		if (temp->index < index_min)
+//			index_min = temp->index;
+//		else
+//			temp = temp->next;
+//	}
+//	dprintf(2,"index min de b = %d\n", index_min);
+//	return (index_min);
+//}
+
 //void final_sorting(t_stack *a, t_stack *b, int *n)
 //{
 //	int		nb_index_stack;

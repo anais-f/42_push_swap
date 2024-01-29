@@ -44,12 +44,11 @@ int main(int argc, char **argv)
 	//	tiny_sort(&a, &b);
 		pre_sorting_stack(&a, &b);
 		sorting_little_stack(&a, &b);
-//		ft_printf("stack before final sort :\n");
-//		print_stack(&a);
-//		print_stack(&b);
+		ft_printf("stack before final sort :\n");
+		print_stack(&a);
+		print_stack(&b);
 		//	find_half(&b, 20, 19, &n);
-		find_min_index(&b);
-//		final_sorting(&a, &b, &n);
+		final_sorting(&a, &b);
 		dprintf(2, "\nstack after :\n");
 		print_stack(&a);
 		print_stack(&b);

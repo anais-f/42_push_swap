@@ -55,34 +55,18 @@ int find_max_index(t_stack *stack)
 {
 	t_node	*temp;
 	int 	index_max;
+	int 	i;
 
+	i = 0;
 	temp = stack->head;
 	index_max = temp->index;
-	while (temp->next != stack->head)
+	while (i < stack->size)
 	{
 		if (temp->index > index_max)
 			index_max = temp->index;
-		else
-			temp= temp->next;
+		temp = temp->next;
+		i++;
+	//	dprintf(2,"index max = %d\n", index_max);
 	}
-	dprintf(2,"index max de b = %d\n", index_max);
 	return (index_max);
-}
-
-int find_min_index(t_stack *a)
-{
-	t_node	*temp;
-	int 	index_min;
-
-	temp = a->head;
-	index_min = temp->index;
-	while (temp->next != a->head)
-	{
-		if (temp->index < index_min)
-			index_min = temp->index;
-		else
-			temp = temp->next;
-	}
-	dprintf(2,"index max de b = %d\n", index_min);
-	return (index_min);
 }

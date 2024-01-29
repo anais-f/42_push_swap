@@ -12,70 +12,47 @@
 
 #include "push_swap.h"
 
+//si 	le dernier	de 	A	est 	le + grand->je	push 	le	premier	de B
+//si	celui	push est = a index - 1->je	push	le	suivant	de	B / sinon je	rotate A
+//si je rotate 	A, dans B	je	vais	dans	la direction 	du	plus grand	dans	B(rb	ou	rrb)
+// et	je	peux	push s il	est	compris entre	le	head->prev->index	et 	le head->index ->je
+//verifie	dans	A	sa position	si	dans A	je	push le	index - 1	en	haut, il faut que	je verifie
+//ce	que	j'ai en bas afin de voir s'	il faut rra et swap et je boucle
+
 void final_sorting(t_stack *a, t_stack *b)
 {
-	t_node	*temp;
-	int 	biggest_index_a;
-	int 	biggest_index_b;
-	int 	nb_index_stack;
-	int 	smallest_index_a;
+	int	biggest_index_a;
+	int biggest_index_b;
+	int i = 0;
 
-	temp = b->head;
-	nb_index_stack = b->size - 1;
-
-// je cherche le plus grand dans b pour donner ma direction, je vais rotate ou reverse rotate
-// je push le suivant qui est au sommet de b
-// s'il est un plus petit, je le laisse en haut -> sinon je rotate pour le passer en bas
-// apres je regarde sur b si le suivant est compris entre le plus petit et le plus grand de A, si oui je le push
-// si non, je rrb ou rb en fonction de ma direction donnee au dessus puis je reverifie
-// si je l'ai push, je verifie sa place dans a pour voir si je dois swap ou rotate pour le ranger
-
-// fonction qui cherche le + grand et le plus + petit dans une pile
-// le min de a est cense etre celui qui est en bas, soit head->prev
-
-	biggest_index_b = find_max_index(b);
-
-	//while
-	biggest_index_a = find_max_index(a);
-	smallest_index_a = find_min_index(a);
-	if (a->head->prev->index == biggest_index_a)
+	while (b->head != NULL)
 	{
-		push(b, a);
-	}
-	if (a->head->index != a->head->next->index - 1)
-		rotate(a);
-	if (b->head->index < biggest_index_a && b->head->index > smallest_index_a) {
-		push(b, a);
-	}
-	else
-	{
-		if (find_half(b, biggest_index_b, nb_index_stack) == 1) {
-			rotate(b);
-		}
-		else {
-			reverse_rotate(b);
-		}
-	}
-
-
-		------
-	push(b, a);
-//	while (temp && index_to_push >= 0)
-//	{
-
-		if (temp->index < a->head->index && temp->index > a->head->prev->index)
+		biggest_index_a = find_max_index(a);
+		biggest_index_b = find_max_index(b);
+		if (b->head->index == a->head->index - 1)
+			push(b, a);
+		else if (a->head->prev->index == biggest_index_a)
 		{
 			push(b, a);
-			if (a->head->index - 1 == )
+			rotate(a);
+		}
+		else if (b->head->index > a->head->prev->index)
+		{
+			push(b, a);
+			rotate(a);
 		}
 		else
-			rotate(b);
-		//temp = temp->next;
+		{
+			if	(find_half(b, biggest_index_b, b->size) == 1)
+				rotate(b);
+			else
+				reverse_rotate(b);
+		}
+		while (a->head->index - 1 == a->head->prev->index) {
+			reverse_rotate(a);
+		}
 	}
-
-
 }
-
 
 int	find_half(t_stack *b, int index_to_push, int nb_index_stack)
 {
