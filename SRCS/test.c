@@ -49,7 +49,7 @@
 //	return (index_min);
 //}
 
-//void final_sorting(t_stack *a, t_stack *b, int *n)
+//void final_sorting_b_to_a(t_stack *a, t_stack *b, int *n)
 //{
 //	int		nb_index_stack;
 //	int		index_to_push;

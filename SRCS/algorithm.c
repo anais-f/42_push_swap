@@ -12,18 +12,11 @@
 
 #include "push_swap.h"
 
-//si 	le dernier	de 	A	est 	le + grand->je	push 	le	premier	de B
-//si	celui	push est = a index - 1->je	push	le	suivant	de	B / sinon je	rotate A
-//si je rotate 	A, dans B	je	vais	dans	la direction 	du	plus grand	dans	B(rb	ou	rrb)
-// et	je	peux	push s il	est	compris entre	le	head->prev->index	et 	le head->index ->je
-//verifie	dans	A	sa position	si	dans A	je	push le	index - 1	en	haut, il faut que	je verifie
-//ce	que	j'ai en bas afin de voir s'	il faut rra et swap et je boucle
 
-void final_sorting(t_stack *a, t_stack *b)
+void	final_sorting_b_to_a(t_stack *a, t_stack *b)
 {
 	int	biggest_index_a;
-	int biggest_index_b;
-	int i = 0;
+	int	biggest_index_b;
 
 	while (b->head != NULL)
 	{
@@ -43,14 +36,13 @@ void final_sorting(t_stack *a, t_stack *b)
 		}
 		else
 		{
-			if	(find_half(b, biggest_index_b, b->size) == 1)
+			if (find_half(b, biggest_index_b, b->size) == 1)
 				rotate(b);
 			else
 				reverse_rotate(b);
 		}
-		while (a->head->index - 1 == a->head->prev->index) {
+		while (a->head->index - 1 == a->head->prev->index)
 			reverse_rotate(a);
-		}
 	}
 }
 
@@ -75,7 +67,7 @@ int	find_half(t_stack *b, int index_to_push, int nb_index_stack)
 	return (j);
 }
 
-void	pre_sorting_stack(t_stack *a, t_stack *b)
+void	pre_sorting_stack_a_to_b(t_stack *a, t_stack *b)
 {
 	int chunk;
 	int num;

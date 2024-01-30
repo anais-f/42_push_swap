@@ -32,7 +32,3 @@ void	push(t_stack *from, t_stack *to)
 		if (write(1, "pb\n", 3) != 3)
 			exit(1);
 }
-
-//	(*b)->next->prev = (*b)->prev; //maillon2/newhead->prev = tail
-//	(*b)->prev->next = (*b)->next; //maillon tail->next = 2/newhead;
-//	*b = (*b)->next;

@@ -31,18 +31,15 @@ typedef struct	s_stack
 {
 	char			 id;
 	int				size;
-	struct s_node	*head; //pointeur sur une structure -> me permet de pointer sur ma head de ma stack
+	struct s_node	*head;
 }	t_stack;
-//structure qui contient mes deux pointeurs sur head de stack pour conserver leur nom + taille et les promener partout a la place des pointeurs
 
 int		check_args(char **argv);
 int		get_value(const char *str, int *numb);
 void	fill_stack(char **argv, t_stack *stack_a);
-void	ft_tri(t_node **stack_a, int argc);
 t_node	*ft_dlstnew(int value);
 void	ft_dlstadd_back(t_node **head, t_node *new_node);
 void	ft_dlstadd_front(t_node **head, t_node *new_node);
-size_t	len_dlst(t_node *stack);
 void	rotate(t_stack *stack);
 void	rotate_ab(t_stack *stack_a, t_stack *stack_b);
 void	reverse_rotate(t_stack *stack);
@@ -50,20 +47,15 @@ void	reverse_rotate_ab(t_stack *stack_a, t_stack *stack_b);
 void	swap(t_stack *stack);
 void	swap_ab(t_stack *a, t_stack *b);
 void	push(t_stack *from, t_stack *to);
-void	print_stack(t_stack *stack);
 void	init_stack(t_stack *a, t_stack *b);
 void	free_exit(t_node *a, t_node *b, bool error);
 void	index_value(t_stack *a);
 double	get_chunk(t_stack *a);
-void	pre_sorting_stack(t_stack *a, t_stack *b);
-void	sort(t_stack *a, t_stack *b);
-void    tiny_sort(t_stack *a, t_stack *b);
+void	pre_sorting_stack_a_to_b(t_stack *a, t_stack *b);
 int		find_half(t_stack *b, int index_to_push, int nb_index_stack);
-void 	final_sorting(t_stack *a, t_stack *b);
+void	final_sorting_b_to_a(t_stack *a, t_stack *b);
 int 	check_list_sorted(t_stack *a);
 void	sorting_little_stack(t_stack *a, t_stack *b);
-int		presorting_find_half(t_stack *a, int sum, int nb_index_stack);
 int 	find_max_index(t_stack *stack);
-int 	find_min_index(t_stack *a);
 
 #endif
