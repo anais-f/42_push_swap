@@ -20,12 +20,18 @@ void	reverse_rotate(t_stack *stack)
 	if (stack->id == 'a')
 	{
 		if (write(1, "rra\n", 4) != 4)
-			exit(1);
+		{
+			free_exit(stack->head, stack->head, true);
+			exit (1);
+		}
 	}
 	if (stack->id == 'b')
 	{
 		if (write(1, "rrb\n", 4) != 4)
-			exit(1);
+		{
+			free_exit(stack->head, stack->head, true);
+			exit (1);
+		}
 	}
 }
 
@@ -36,5 +42,8 @@ void	reverse_rotate_ab(t_stack *stack_a, t_stack *stack_b)
 	stack_a->head = (stack_a->head)->prev;
 	stack_b->head = (stack_b->head)->prev;
 	if (write (1, "rrr\n", 4) != 4)
+	{
+		free_exit(stack_a->head, stack_b->head, true);
 		exit (1);
+	}
 }

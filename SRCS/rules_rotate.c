@@ -20,12 +20,18 @@ void	rotate(t_stack *stack)
 	if (stack->id == 'a')
 	{
 		if (write (1, "ra\n", 3) != 3)
+		{
+			free_exit(stack->head, stack->head, true);
 			exit (1);
+		}
 	}
 	else if (stack->id == 'b')
 	{
 		if (write (1, "rb\n", 3) != 3)
+		{
+			free_exit(stack->head, stack->head, true);
 			exit (1);
+		}
 	}
 }
 
@@ -36,5 +42,8 @@ void	rotate_ab(t_stack *stack_a, t_stack *stack_b)
 	stack_a->head = stack_a->head->next;
 	stack_b->head = stack_b->head->next;
 	if (write (1, "rr\n", 3) != 3)
+	{
+		free_exit(stack_a->head, stack_b->head, true);
 		exit (1);
+	}
 }

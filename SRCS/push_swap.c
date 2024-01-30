@@ -20,13 +20,6 @@ int	main(int argc, char **argv)
 	if (argc <= 1)
 		exit(1);
 	init_stack(&a, &b);
-//	if (argc == 2)
-//	{
-//		fill_stack(argv, &a);
-//		if (a.head == NULL)
-//			free_exit(a.head, NULL, true);
-//		index_value(&a);
-//	}
 	if (argc >= 2)
 	{
 		fill_stack(argv, &a);

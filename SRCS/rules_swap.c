@@ -26,12 +26,18 @@ void	swap(t_stack *stack)
 	if (stack->id == 'a')
 	{
 		if (write(1, "sa\n", 3) != 3)
-			exit(1);
+		{
+			free_exit(stack->head, stack->head, true);
+			exit (1);
+		}
 	}
 	if (stack->id == 'b')
 	{
 		if (write(1, "sb\n", 3) != 3)
-			exit(1);
+		{
+			free_exit(stack->head, stack->head, true);
+			exit (1);
+		}
 	}
 }
 
@@ -59,5 +65,8 @@ void	swap_ab(t_stack *a, t_stack *b)
 		b->head->next->index = temp_index;
 	}
 	if (write (1, "ss\n", 3) != 3)
+	{
+		free_exit(a->head, b->head, true);
 		exit (1);
+	}
 }
