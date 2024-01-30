@@ -24,15 +24,9 @@ void	final_sorting_b_to_a(t_stack *a, t_stack *b)
 		if (b->head->index == a->head->index - 1)
 			push(b, a);
 		else if (a->head->prev->index == biggest_index_a)
-		{
-			push(b, a);
-			rotate(a);
-		}
+			if_b_can_be_pushed(a, b);
 		else if (b->head->index > a->head->prev->index)
-		{
-			push(b, a);
-			rotate(a);
-		}
+			if_b_can_be_pushed(a, b);
 		else
 		{
 			if (find_half(b, biggest_index_b, b->size) == 1)

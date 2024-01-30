@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include "libft.h"
 # include <limits.h>
@@ -22,14 +22,14 @@
 typedef struct s_node
 {
 	int				value;
-	int 			index;
-	struct	s_node	*next;
-	struct	s_node	*prev;
+	int				index;
+	struct s_node	*next;
+	struct s_node	*prev;
 }	t_node;
 
-typedef struct	s_stack
+typedef struct s_stack
 {
-	char			 id;
+	char			id;
 	int				size;
 	struct s_node	*head;
 }	t_stack;
@@ -54,8 +54,10 @@ double	get_chunk(t_stack *a);
 void	pre_sorting_stack_a_to_b(t_stack *a, t_stack *b);
 int		find_half(t_stack *b, int index_to_push, int nb_index_stack);
 void	final_sorting_b_to_a(t_stack *a, t_stack *b);
-int 	check_list_sorted(t_stack *a);
+int		check_list_sorted(t_stack *a);
 void	sorting_little_stack(t_stack *a, t_stack *b);
-int 	find_max_index(t_stack *stack);
+int		find_max_index(t_stack *stack);
+void	check_double(t_stack *stack_a, t_node *current);
+void	if_b_can_be_pushed(t_stack *a, t_stack *b);
 
 #endif

@@ -43,26 +43,25 @@ void	swap(t_stack *stack)
 
 void	swap_ab(t_stack *a, t_stack *b)
 {
-	int	temp_value;
-	int	temp_index;
+	int	temp_value_index;
 
 	if (a->head)
 	{
-		temp_value = a->head->value;
+		temp_value_index = a->head->value;
 		a->head->value = a->head->next->value;
-		a->head->next->value = temp_value;
-		temp_index = a->head->index;
+		a->head->next->value = temp_value_index;
+		temp_value_index = a->head->index;
 		a->head->index = a->head->next->index;
-		a->head->next->index = temp_index;
+		a->head->next->index = temp_value_index;
 	}
 	if (b->head)
 	{
-		temp_value = b->head->value;
+		temp_value_index = b->head->value;
 		b->head->value = b->head->next->value;
-		b->head->next->value = temp_value;
-		temp_index = b->head->index;
+		b->head->next->value = temp_value_index;
+		temp_value_index = b->head->index;
 		b->head->index = b->head->next->index;
-		b->head->next->index = temp_index;
+		b->head->next->index = temp_value_index;
 	}
 	if (write (1, "ss\n", 3) != 3)
 	{

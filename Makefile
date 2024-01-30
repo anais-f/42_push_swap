@@ -30,8 +30,6 @@ SRCS=\
 		stack_utils.c \
 		algorithm.c \
 		algorithm_utils.c \
-		test.c \
-
 
 SRCS:= $(SRCS:%=$(SRCS_DIR)/%)
 

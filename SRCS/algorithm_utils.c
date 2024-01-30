@@ -69,3 +69,9 @@ int	find_max_index(t_stack *stack)
 	}
 	return (index_max);
 }
+
+void	if_b_can_be_pushed(t_stack *a, t_stack *b)
+{
+	push(b, a);
+	rotate(a);
+}

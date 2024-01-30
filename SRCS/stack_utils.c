@@ -44,13 +44,18 @@ void	fill_stack(char **argv, t_stack *stack_a)
 			stack_a->size++;
 		}
 		current = stack_a->head;
-		while (current->next != stack_a->head)
-		{
-			if (current->value == stack_a->head->prev->value)
-				free_exit(stack_a->head, NULL, true);
-			current = current->next;
-		}
+		check_double(stack_a, current);
 		i++;
+	}
+}
+
+void	check_double(t_stack *stack_a, t_node *current)
+{
+	while (current->next != stack_a->head)
+	{
+		if (current->value == stack_a->head->prev->value)
+			free_exit(stack_a->head, NULL, true);
+		current = current->next;
 	}
 }
 
