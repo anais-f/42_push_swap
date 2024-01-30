@@ -17,14 +17,15 @@ void	rotate(t_stack *stack)
 	if (!stack->head)
 		return ;
 	stack->head = stack->head->next;
-	if (stack->id == 'a') {
+	if (stack->id == 'a')
+	{
 		if (write (1, "ra\n", 3) != 3)
 			exit (1);
 	}
-	else if (stack->id == 'b') {
+	else if (stack->id == 'b')
+	{
 		if (write (1, "rb\n", 3) != 3)
 			exit (1);
-		//return (free_exit(stacka, stackb, true));
 	}
 }
 

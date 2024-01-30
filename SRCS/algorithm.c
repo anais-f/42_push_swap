@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 
-
 void	final_sorting_b_to_a(t_stack *a, t_stack *b)
 {
 	int	biggest_index_a;
@@ -69,20 +68,19 @@ int	find_half(t_stack *b, int index_to_push, int nb_index_stack)
 
 void	pre_sorting_stack_a_to_b(t_stack *a, t_stack *b)
 {
-	int chunk;
-	int num;
-	int index_max;
+	const int	chunk = get_chunk(a);
+	const int	index_max = a->size - 4;
+	int			num;
 
-	index_max = a->size - 4;
 	num = 0;
-	chunk = get_chunk(a);
 	while (a->head != NULL && a->size > 3)
 	{
-		if ((a->head->index >= 0 && a->head->index <= chunk + num) && a->head->index <= index_max)
+		if ((a->head->index >= 0 && a->head->index <= chunk + num) \
+			&& a->head->index <= index_max)
 		{
-			if (a->head->index <= num) // je push en haut
+			if (a->head->index <= num)
 				push(a, b);
-			else if (a->head->index > num) // je push en bas avec rotate
+			else if (a->head->index > num)
 			{
 				push(a, b);
 				if (a->head->index >= 0 && a->head->index <= chunk + num)
@@ -99,7 +97,7 @@ void	pre_sorting_stack_a_to_b(t_stack *a, t_stack *b)
 
 void	sorting_little_stack(t_stack *a, t_stack *b)
 {
-	int 	index_max;
+	int	index_max;
 
 	index_max = a->size + b->size - 1;
 	if (check_list_sorted(a) == 0)
@@ -114,7 +112,7 @@ void	sorting_little_stack(t_stack *a, t_stack *b)
 
 double	get_chunk(t_stack *a)
 {
-	int 	nb_nodes;
+	int		nb_nodes;
 	double	chunk;
 
 	nb_nodes = a->size;

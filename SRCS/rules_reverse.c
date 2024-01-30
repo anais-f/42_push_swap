@@ -18,11 +18,15 @@ void	reverse_rotate(t_stack *stack)
 		return ;
 	stack->head = stack->head->prev;
 	if (stack->id == 'a')
-		if (write (1, "rra\n", 4) != 4)
-			exit (1);
+	{
+		if (write(1, "rra\n", 4) != 4)
+			exit(1);
+	}
 	if (stack->id == 'b')
-		if (write (1, "rrb\n", 4) != 4)
-			exit (1);
+	{
+		if (write(1, "rrb\n", 4) != 4)
+			exit(1);
+	}
 }
 
 void	reverse_rotate_ab(t_stack *stack_a, t_stack *stack_b)

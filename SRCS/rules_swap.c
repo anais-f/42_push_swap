@@ -14,8 +14,8 @@
 
 void	swap(t_stack *stack)
 {
-	int temp_value;
-	int temp_index;
+	int	temp_value;
+	int	temp_index;
 
 	temp_value = stack->head->value;
 	stack->head->value = stack->head->next->value;
@@ -24,17 +24,21 @@ void	swap(t_stack *stack)
 	stack->head->index = stack->head->next->index;
 	stack->head->next->index = temp_index;
 	if (stack->id == 'a')
+	{
 		if (write(1, "sa\n", 3) != 3)
-			exit (1);
+			exit(1);
+	}
 	if (stack->id == 'b')
+	{
 		if (write(1, "sb\n", 3) != 3)
-			exit (1);
+			exit(1);
+	}
 }
 
 void	swap_ab(t_stack *a, t_stack *b)
 {
-	int temp_value;
-	int temp_index;
+	int	temp_value;
+	int	temp_index;
 
 	if (a->head)
 	{

@@ -14,17 +14,17 @@
 
 void	index_value(t_stack *a)
 {
-	int	count_value;
+	int		count_value;
 	t_node	*to_compare;
 	t_node	*node_index;
 	int		size_lst;
 
 	size_lst = a->size;
-	node_index = a->head; // demarre a 0 = i
+	node_index = a->head;
 	while (size_lst > 0)
 	{
 		count_value = 0;
-		to_compare = node_index->next; // demarre a l'equivalent de 1 = i+1
+		to_compare = node_index->next;
 		while (to_compare != node_index)
 		{
 			if (node_index->value > to_compare->value)
@@ -37,7 +37,7 @@ void	index_value(t_stack *a)
 	}
 }
 
-int check_list_sorted(t_stack *a)
+int	check_list_sorted(t_stack *a)
 {
 	t_node	*head;
 
@@ -51,11 +51,11 @@ int check_list_sorted(t_stack *a)
 	return (0);
 }
 
-int find_max_index(t_stack *stack)
+int	find_max_index(t_stack *stack)
 {
 	t_node	*temp;
-	int 	index_max;
-	int 	i;
+	int		index_max;
+	int		i;
 
 	i = 0;
 	temp = stack->head;
@@ -66,7 +66,6 @@ int find_max_index(t_stack *stack)
 			index_max = temp->index;
 		temp = temp->next;
 		i++;
-	//	dprintf(2,"index max = %d\n", index_max);
 	}
 	return (index_max);
 }

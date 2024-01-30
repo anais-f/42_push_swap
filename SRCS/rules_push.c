@@ -14,7 +14,7 @@
 
 void	push(t_stack *from, t_stack *to)
 {
-	t_node *temp;
+	t_node	*temp;
 
 	temp = from->head;
 	from->head->next->prev = from->head->prev;
@@ -26,9 +26,13 @@ void	push(t_stack *from, t_stack *to)
 	ft_dlstadd_front(&to->head, temp);
 	to->size++;
 	if (to->id == 'a' && from->id == 'b')
+	{
 		if (write(1, "pa\n", 3) != 3)
 			exit(1);
+	}
 	if (to->id == 'b' && from->id == 'a')
+	{
 		if (write(1, "pb\n", 3) != 3)
 			exit(1);
+	}
 }
