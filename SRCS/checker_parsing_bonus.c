@@ -67,3 +67,28 @@ int	get_value_checker(const char *str, int *numb)
 	*numb = nb * sign;
 	return (0);
 }
+
+void	index_value_checker(t_stack *a)
+{
+	int		count_value;
+	t_node	*to_compare;
+	t_node	*node_index;
+	int		size_lst;
+
+	size_lst = a->size;
+	node_index = a->head;
+	while (size_lst > 0)
+	{
+		count_value = 0;
+		to_compare = node_index->next;
+		while (to_compare != node_index)
+		{
+			if (node_index->value > to_compare->value)
+				count_value++;
+			to_compare = to_compare->next;
+		}
+		node_index->index = count_value;
+		node_index = node_index->next;
+		size_lst--;
+	}
+}

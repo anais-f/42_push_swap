@@ -6,7 +6,7 @@
 #    By: anfichet <anfichet@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/16 18:25:46 by anfichet          #+#    #+#              #
-#    Updated: 2024/01/27 16:46:29 by anfichet         ###   ########.fr        #
+#    Updated: 2024/01/31 14:49:28 by anfichet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,7 @@ MAKEFLAGS += --no-print-directory
 
 # **********************************RULES**************************************** #
 
-all:$(NAME)
+all:	bonus $(NAME)
 
 bonus:$(CHECKER)
 

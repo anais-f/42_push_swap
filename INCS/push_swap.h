@@ -59,6 +59,5 @@ void	sorting_little_stack(t_stack *a, t_stack *b);
 int		find_max_index(t_stack *stack);
 void	check_double(t_stack *stack_a, t_node *current);
 void	if_b_can_be_pushed(t_stack *a, t_stack *b);
-int test_parsing(char *str);
 
 #endif

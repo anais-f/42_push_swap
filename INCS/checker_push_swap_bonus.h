@@ -51,7 +51,7 @@ t_node	*ft_dlstnew_checker(int value);
 void	ft_dlstadd_back_checker(t_node **head, t_node *new_node);
 void	ft_dlstadd_front_checker(t_node **head, t_node *new_node);
 void	make_rules(char *line, t_stack *stack_a, t_stack *stack_b);
-int		ft_strcmp(const char *s1, const char *s2);
 int		check_list_sorted_checker(t_stack *a);
+void	index_value_checker(t_stack *a);
 
 #endif

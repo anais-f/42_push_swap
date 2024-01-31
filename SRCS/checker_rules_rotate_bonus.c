@@ -10,15 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "checker_push_swap_bonus.h"
 
 void	rotate_checker(t_stack *stack)
 {
 	if (!stack->head)
-	{
 		return ;
-	}
 	stack->head = stack->head->next;
 }
 
