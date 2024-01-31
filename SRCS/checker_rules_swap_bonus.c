@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   checker_rules_swap.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anfichet <anfichet@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 19:41:54 by anfichet          #+#    #+#             */
-/*   Updated: 2024/01/18 19:41:54 by anfichet         ###   ########.fr       */
+/*   Created: 2024/01/30 18:46:15 by anfichet          #+#    #+#             */
+/*   Updated: 2024/01/30 18:46:15 by anfichet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_push_swap_bonus.h"
 
-void	swap(t_stack *stack)
+void	swap_checker(t_stack *stack)
 {
 	int	temp_value;
 	int	temp_index;
@@ -25,19 +25,9 @@ void	swap(t_stack *stack)
 	temp_index = stack->head->index;
 	stack->head->index = stack->head->next->index;
 	stack->head->next->index = temp_index;
-	if (stack->id == 'a')
-	{
-		if (write(1, "sa\n", 3) != 3)
-			free_exit(stack->head, stack->head, true);
-	}
-	if (stack->id == 'b')
-	{
-		if (write(1, "sb\n", 3) != 3)
-			free_exit(stack->head, stack->head, true);
-	}
 }
 
-void	swap_ab(t_stack *a, t_stack *b)
+void	swap_ab_checker(t_stack *a, t_stack *b)
 {
 	int	temp_value_index;
 
@@ -61,6 +51,4 @@ void	swap_ab(t_stack *a, t_stack *b)
 		b->head->index = b->head->next->index;
 		b->head->next->index = temp_value_index;
 	}
-	if (write (1, "ss\n", 3) != 3)
-		free_exit(a->head, b->head, true);
 }

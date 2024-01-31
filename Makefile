@@ -10,8 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-
 NAME= push_swap
+
+CHECKER= checker
 
 LIBS= libft.a
 
@@ -33,15 +34,31 @@ SRCS=\
 
 SRCS:= $(SRCS:%=$(SRCS_DIR)/%)
 
+SRCS_BONUS=\
+		checker_bonus.c \
+		checker_parsing_bonus.c \
+		checker_rules_swap_bonus.c \
+        checker_rules_rotate_bonus.c \
+        checker_rules_reverse_bonus.c \
+        checker_rules_push_bonus.c \
+        checker_stack_utils_bonus.c \
+        checker_dlst_utils_bonus.c \
+		
+SRCS_BONUS:= $(SRCS_BONUS:%=$(SRCS_DIR)/%)
+
 OBJS_DIR= ./OBJS
 
 OBJS=$(SRCS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
+
+OBJS_BONUS=$(SRCS_BONUS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
 
 INCS= ./INCS
 
 INCS_LIBS = ./libft/INCS
 
 DEPS= $(OBJS:.o=.d)
+
+DEPS_BONUS= $(OBJS_BONUS:.o=.d)
 
 LIBS_TARGET= ./libft/libft.a
 
@@ -55,6 +72,8 @@ CPPFLAGS = -I$(INCS) -I$(INCS_LIBS)
 
 CFSIGSEV = -fsanitize=address
 
+VALGRIND = valgrind -q --leak-check=full --show-reachable=yes
+
 RM= rm -rf
 
 DIR_DUP= mkdir -p $(@D)
@@ -67,13 +86,19 @@ MAKEFLAGS += --no-print-directory
 
 all:$(NAME)
 
--include $(DEPS)
+bonus:$(CHECKER)
 
-$(NAME): $(LIBS_TARGET) $(OBJS) $(INCS)
+-include $(DEPS)
+-include $(DEPS_BONUS)
+
+$(NAME): $(LIBS_TARGET) $(OBJS)
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJS) -L$(dir $(LIBS_TARGET)) -lft -o $(NAME)
 
 #-L ou se trouve la librairie
 # -l + nom de la lib qu'on veut lui donner, soit ft ici
+
+$(CHECKER): $(LIBS_TARGET) $(OBJS_BONUS)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJS_BONUS) -L$(dir $(LIBS_TARGET)) -lft -o $(CHECKER)
 
 $(LIBS_TARGET): FORCE
 	@echo " "
@@ -92,6 +117,12 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 fsanitize:fclean $(LIBS_TARGET) $(OBJS) $(INCS)
 	$(CC) $(CFLAGS) $(CFSIGSEV) $(CPPFLAGS) $(OBJS) -L$(dir $(LIBS_TARGET)) -lft -o $(NAME)
 
+fsanitize_bonus:fclean $(LIBS_TARGET) $(OBJS_BONUS) $(INCS)
+	$(CC) $(CFLAGS) $(CFSIGSEV) $(CPPFLAGS) $(OBJS_BONUS) -L$(dir $(LIBS_TARGET)) -lft -o $(CHECKER)
+
+valgrind:
+	$(MAKE) $(VALGRIND)
+
 clean:
 	$(RM) $(OBJS_DIR)
 	$(MAKE) $@ -C ./libft
@@ -101,12 +132,17 @@ fclean:clean
 	$(RM) $(NAME)
 	$(MAKE) $@ -C ./libft
 
-
 re:fclean all
 
-.PHONY: all clean fclean re FORCE doggy saiko valgrind fsanitize kitty
+.PHONY : print%
+print% :
+	@echo $(patsubst print%,%,$@)=
+	@echo $($(patsubst print%,%,$@))
+
+.PHONY: all clean fclean re FORCE doggy saiko valgrind bonus fsanitize kitty
 FORCE:
 # FORCE permet de forcer la regle a s'executer, donc verifier si la lib est a jour ou si elle doit etre refaite
+
 
 
 # Colors

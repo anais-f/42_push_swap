@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   checker_rules_push.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anfichet <anfichet@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 19:41:48 by anfichet          #+#    #+#             */
-/*   Updated: 2024/01/18 19:41:48 by anfichet         ###   ########.fr       */
+/*   Created: 2024/01/30 18:46:26 by anfichet          #+#    #+#             */
+/*   Updated: 2024/01/30 18:46:26 by anfichet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_push_swap_bonus.h"
 
-void	push(t_stack *from, t_stack *to)
+void	push_checker(t_stack *from, t_stack *to)
 {
 	t_node	*temp;
 
@@ -25,16 +25,6 @@ void	push(t_stack *from, t_stack *to)
 	from->size--;
 	if (from->size == 0)
 		from->head = NULL;
-	ft_dlstadd_front(&to->head, temp);
+	ft_dlstadd_front_checker(&to->head, temp);
 	to->size++;
-	if (to->id == 'a' && from->id == 'b')
-	{
-		if (write(1, "pa\n", 3) != 3)
-			exit(1);
-	}
-	if (to->id == 'b' && from->id == 'a')
-	{
-		if (write(1, "pb\n", 3) != 3)
-			free_exit(from->head, to->head, true);
-	}
 }
