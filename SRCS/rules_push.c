@@ -30,7 +30,7 @@ void	push(t_stack *from, t_stack *to)
 	if (to->id == 'a' && from->id == 'b')
 	{
 		if (write(1, "pa\n", 3) != 3)
-			exit(1);
+			free_exit(from->head, to->head, true);
 	}
 	if (to->id == 'b' && from->id == 'a')
 	{

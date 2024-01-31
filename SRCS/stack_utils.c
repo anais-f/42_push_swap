@@ -40,6 +40,8 @@ void	fill_stack(char **argv, t_stack *stack_a)
 		else
 		{
 			temp_node = ft_dlstnew(nb_temp);
+			if (!temp_node)
+				free_exit(stack_a->head, NULL, true);
 			ft_dlstadd_back(&stack_a->head, temp_node);
 			stack_a->size++;
 		}

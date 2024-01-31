@@ -41,6 +41,8 @@ int	check_list_sorted(t_stack *a)
 {
 	t_node	*head;
 
+	if (!a->head)
+		return (-1);
 	head = a->head;
 	while (head->next != a->head)
 	{

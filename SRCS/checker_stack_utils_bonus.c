@@ -40,6 +40,8 @@ void	fill_stack_checker(char **argv, t_stack *stack_a)
 		else
 		{
 			temp_node = ft_dlstnew_checker(nb_temp);
+			if (!temp_node)
+				free_exit_checker(stack_a->head, NULL, true, NULL);
 			ft_dlstadd_back_checker(&stack_a->head, temp_node);
 			stack_a->size++;
 		}
@@ -90,6 +92,8 @@ int	check_list_sorted_checker(t_stack *a)
 {
 	t_node	*head;
 
+	if (!a->head)
+		return (-1);
 	head = a->head;
 	while (head->next != a->head)
 	{
