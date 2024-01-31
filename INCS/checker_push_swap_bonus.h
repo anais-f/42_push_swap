@@ -46,7 +46,7 @@ void	swap_ab_checker(t_stack *a, t_stack *b);
 void	init_stack_checker(t_stack *a, t_stack *b);
 void	fill_stack_checker(char **argv, t_stack *stack_a);
 void	check_double_checker(t_stack *stack_a, t_node *current);
-void	free_exit_checker(t_node *a, t_node *b, bool error);
+void	free_exit_checker(t_node *a, t_node *b, bool error, char *line);
 t_node	*ft_dlstnew_checker(int value);
 void	ft_dlstadd_back_checker(t_node **head, t_node *new_node);
 void	ft_dlstadd_front_checker(t_node **head, t_node *new_node);

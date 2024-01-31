@@ -10,17 +10,17 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME= push_swap
+NAME = push_swap
 
-CHECKER= checker
+CHECKER = checker
 
-LIBS= libft.a
+LIBS = libft.a
 
 # *********************************VARIABLES**************************************** #
 
-SRCS_DIR= ./SRCS
+SRCS_DIR = ./SRCS
 
-SRCS=\
+SRCS =\
 		dlst_utils.c \
 		push_swap.c \
 		parsing.c \
@@ -32,9 +32,9 @@ SRCS=\
 		algorithm.c \
 		algorithm_utils.c \
 
-SRCS:= $(SRCS:%=$(SRCS_DIR)/%)
+SRCS := $(SRCS:%=$(SRCS_DIR)/%)
 
-SRCS_BONUS=\
+SRCS_BONUS =\
 		checker_bonus.c \
 		checker_parsing_bonus.c \
 		checker_rules_swap_bonus.c \
@@ -44,29 +44,29 @@ SRCS_BONUS=\
         checker_stack_utils_bonus.c \
         checker_dlst_utils_bonus.c \
 		
-SRCS_BONUS:= $(SRCS_BONUS:%=$(SRCS_DIR)/%)
+SRCS_BONUS := $(SRCS_BONUS:%=$(SRCS_DIR)/%)
 
-OBJS_DIR= ./OBJS
+OBJS_DIR = ./OBJS
 
-OBJS=$(SRCS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
+OBJS = $(SRCS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
 
-OBJS_BONUS=$(SRCS_BONUS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
+OBJS_BONUS = $(SRCS_BONUS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
 
-INCS= ./INCS
+INCS = ./INCS
 
 INCS_LIBS = ./libft/INCS
 
-DEPS= $(OBJS:.o=.d)
+DEPS = $(OBJS:.o=.d)
 
-DEPS_BONUS= $(OBJS_BONUS:.o=.d)
+DEPS_BONUS = $(OBJS_BONUS:.o=.d)
 
-LIBS_TARGET= ./libft/libft.a
+LIBS_TARGET = ./libft/libft.a
 
 # **********************************COMMANDS**************************************** #
 
-CC= cc
+CC = cc
 
-CFLAGS= -Werror -Wextra -Wall -g3 -MMD -MP
+CFLAGS = -Werror -Wextra -Wall -g3 -MMD -MP
 
 CPPFLAGS = -I$(INCS) -I$(INCS_LIBS)
 
@@ -74,7 +74,7 @@ CFSIGSEV = -fsanitize=address
 
 VALGRIND = valgrind -q --leak-check=full --show-reachable=yes
 
-RM= rm -rf
+RM = rm -rf
 
 DIR_DUP= mkdir -p $(@D)
 
@@ -86,7 +86,7 @@ MAKEFLAGS += --no-print-directory
 
 all:	bonus $(NAME)
 
-bonus:$(CHECKER)
+bonus: $(CHECKER)
 
 -include $(DEPS)
 -include $(DEPS_BONUS)
@@ -114,35 +114,33 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 #-c prend les .c et les creer en .o
 # -o : sert a donner les noms
 
-fsanitize:fclean $(LIBS_TARGET) $(OBJS) $(INCS)
+fsanitize : fclean $(LIBS_TARGET) $(OBJS) $(INCS)
 	$(CC) $(CFLAGS) $(CFSIGSEV) $(CPPFLAGS) $(OBJS) -L$(dir $(LIBS_TARGET)) -lft -o $(NAME)
 
-fsanitize_bonus:fclean $(LIBS_TARGET) $(OBJS_BONUS) $(INCS)
+fsanitize_bonus : fclean $(LIBS_TARGET) $(OBJS_BONUS) $(INCS)
 	$(CC) $(CFLAGS) $(CFSIGSEV) $(CPPFLAGS) $(OBJS_BONUS) -L$(dir $(LIBS_TARGET)) -lft -o $(CHECKER)
 
-valgrind:
+valgrind :
 	$(MAKE) $(VALGRIND)
 
-clean:
+clean :
 	$(RM) $(OBJS_DIR)
 	$(MAKE) $@ -C ./libft
 # -C pour lui donner le directory pour qu'il aille faire la regle dans le dossier libft
 
-fclean:clean
+fclean : clean
 	$(RM) $(NAME)
 	$(MAKE) $@ -C ./libft
 
-re:fclean all
+re : fclean all
 
-.PHONY : print%
 print% :
 	@echo $(patsubst print%,%,$@)=
 	@echo $($(patsubst print%,%,$@))
 
-.PHONY: all clean fclean re FORCE doggy saiko valgrind bonus fsanitize kitty
+.PHONY: all clean fclean re FORCE doggy saiko valgrind bonus fsanitize kitty print%
 FORCE:
 # FORCE permet de forcer la regle a s'executer, donc verifier si la lib est a jour ou si elle doit etre refaite
-
 
 
 # Colors

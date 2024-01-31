@@ -32,11 +32,11 @@ void	fill_stack_checker(char **argv, t_stack *stack_a)
 	i = 1;
 	nb_temp = 0;
 	if (check_args_checker(argv) == -1)
-		free_exit_checker(NULL, NULL, true);
+		free_exit_checker(NULL, NULL, true, NULL);
 	while (argv[i])
 	{
 		if (get_value_checker(argv[i], &nb_temp) == -1)
-			free_exit_checker(stack_a->head, NULL, true);
+			free_exit_checker(stack_a->head, NULL, true, NULL);
 		else
 		{
 			temp_node = ft_dlstnew_checker(nb_temp);
@@ -54,12 +54,12 @@ void	check_double_checker(t_stack *stack_a, t_node *current)
 	while (current->next != stack_a->head)
 	{
 		if (current->value == stack_a->head->prev->value)
-			free_exit_checker(stack_a->head, NULL, true);
+			free_exit_checker(stack_a->head, NULL, true, NULL);
 		current = current->next;
 	}
 }
 
-void	free_exit_checker(t_node *a, t_node *b, bool error)
+void	free_exit_checker(t_node *a, t_node *b, bool error, char *line)
 {
 	t_node	*temp;
 
@@ -79,6 +79,8 @@ void	free_exit_checker(t_node *a, t_node *b, bool error)
 		b = b->next;
 		free (temp);
 	}
+	if (line)
+		free(line);
 	if (error)
 		write (STDERR_FILENO, "Error\n", 6);
 	exit (error);

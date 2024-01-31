@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	init_stack_checker(&a, &b);
 	fill_stack_checker(argv, &a);
 	if (a.head == NULL)
-		free_exit_checker(a.head, NULL, true);
+		free_exit_checker(a.head, NULL, true, NULL);
 	index_value_checker(&a);
 	line = get_next_line(0);
 	while (line)
@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
-	free_exit_checker(a.head, b.head, false);
+	free_exit_checker(a.head, b.head, false, NULL);
 	return (0);
 }
 
@@ -65,5 +65,5 @@ void	make_rules(char *line, t_stack *stack_a, t_stack *stack_b)
 	else if (ft_strcmp(line, "ss\n") == 0)
 		swap_ab_checker(stack_a, stack_b);
 	else
-		free_exit_checker(stack_a->head, stack_b->head, true);
+		free_exit_checker(stack_a->head, stack_b->head, true, line);
 }
