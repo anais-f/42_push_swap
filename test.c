@@ -138,3 +138,37 @@
 //}
 // espece de tri a bulles, on compare avec le +1 uniquement
 
+
+size_t	len_dlst(t_node *stack)
+{
+	size_t	i;
+	t_node	*head;
+
+	i = 0;
+	if (!stack)
+		return (0);
+	head = stack;
+	while (stack->next != head)
+	{
+		stack = stack->next;
+		i++;
+	}
+	return (i + 1);
+}
+
+
+void	print_stack(t_stack *stack)
+{
+	size_t	len_stack;
+	t_node	*temp;
+
+	temp = stack->head;
+	len_stack = stack->size;
+	ft_printf("\nstack %c\n", stack->id);
+	while (len_stack > 0)
+	{
+		dprintf(2, "value = %d et index = %d\n", temp->value, temp->index);
+		temp = temp->next;
+		len_stack--;
+	}
+}
